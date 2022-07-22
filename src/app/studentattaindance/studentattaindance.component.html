@@ -1,0 +1,44 @@
+
+<div class="d-flex">
+   
+    <div class="student_list py-3 bg-light text-dark w-50">
+      <div class="text-center my-3">
+        <b>select date : </b> <input min={{today}}  [(ngModel)]="today" type="date" (click)="datechange(userForm)" />
+        
+      </div>
+      <div class="studentslist">
+        
+        <form #userForm="ngForm" (submit)="onFormSubmit(userForm)" (submit)="resetform(userForm)"> 
+      
+      <table class="table" id="tbl_student_attendance">
+        <thead>
+          <tr>
+            <th scope="col">Sr No</th>
+            <th scope="col">Student_name</th>
+            <th scope="col">P/A/L</th>
+          </tr>
+        </thead>
+        <tbody >
+
+          <tr name="tabledata" id="tabledata" *ngFor="let names of students; index as i" >
+            <th scope="row">{{i + 1}}</th>
+            <td>{{students[i].StudentName}}</td>
+            <td class="radioloop" >
+              <input type="radio" value="present"  [ngModel]="present" name="check{{i}}"  />present</td>
+           <td>
+              <input type="radio" value="absent"  [ngModel]="absent"  name="check{{i}}" checked/>absent </td>
+           <td>
+              <input type="radio" value="leave" name="check{{i}}" [ngModel]="leave" checked />leave</td>
+            </tr>
+            <button class="btn btn-success" id="button">Submit</button>
+          </tbody>
+        </table>
+      </form>
+      </div>
+  </div>
+</div>
+
+
+ 
+
+

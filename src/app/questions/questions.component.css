@@ -1,0 +1,14 @@
+li{
+    list-style-type: none;
+    cursor: pointer;
+    margin: 1vh 0;
+}
+.card{
+    padding: 0 1vw;
+}
+li .card:hover{
+    border: 2px solid blue;
+}
+ol{
+    padding: 0;
+}
