@@ -9,7 +9,9 @@ import{ HttpClientModule} from '@angular/common/http';
 import { QuestionsComponent } from './questions/questions.component';
 import { ChangedirectiveDirective } from './changedirective.directive';
 import { ResultComponent } from './result/result.component';
-import { StudentattaindanceComponent } from './studentattaindance/studentattaindance.component'
+import { StudentattaindanceComponent } from './studentattaindance/studentattaindance.component';
+import { ExamstartComponent } from './examstart/examstart.component';
+import { ReportComponent } from './report/report.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,9 @@ import { StudentattaindanceComponent } from './studentattaindance/studentattaind
     QuestionsComponent,
     ChangedirectiveDirective,
     ResultComponent,
-    StudentattaindanceComponent
+    StudentattaindanceComponent,
+    ExamstartComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

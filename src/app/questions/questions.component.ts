@@ -19,7 +19,8 @@ export class QuestionsComponent implements OnInit {
   quizcomplete:boolean=false
   localstor:any
   resultmaker:any
- 
+  name:any
+
 
 
   constructor(private questionservice:QuestionserviceService){
@@ -29,10 +30,12 @@ export class QuestionsComponent implements OnInit {
       this.resultmaker=[];
     }
     else{
-      // this.resultmaker=JSON.parse(this.localstor);
+       this.resultmaker=JSON.parse(this.localstor);
     }
+    this.name=localStorage.getItem("nameofstudent");
+   
   }
-     
+   
   ngOnInit(): void {
     this.getallquestion();
     this.startcounter();
@@ -46,21 +49,18 @@ export class QuestionsComponent implements OnInit {
   }
  
    answer(currentquestion:number,option:any){
-    if(currentquestion==this.questionlist.length){
-      this.quizcomplete=true;
-      this.stopcounter(); 
-
-    }
+   
 
     if(option.correct){
       this.correctanswer++;
-      this.points+=10;
+      this.points+=20;
       setTimeout(() => {
-        
+  
         this.currentquestion++;
         this.getprogresspercent();
         
       }, 500);
+      this.resetcounter();
    
     }
     else{
@@ -71,18 +71,26 @@ export class QuestionsComponent implements OnInit {
         this.resetcounter();
         this.getprogresspercent();
       }, 500);
-
       this.points-=10;
-
+      this.resetcounter();
+     
+    } if(currentquestion==this.questionlist.length){
+      this.quizcomplete=true;
+      this.stopcounter(); 
       const passdata={
+        name:this.name,
         totalquestion:this.questionlist.length,
         totalright:this.correctanswer,
         totalwrong:this.wronganswer,
         totalpoints:this.points
       }
-     localStorage.setItem('resultmaker',JSON.stringify(passdata))
-     
+     this.resultmaker.push(passdata);
+     localStorage.setItem('resultmaker',JSON.stringify(this.resultmaker));
+      
     }
+    // const final=[this.name,this.points];
+    //   console.log(final);
+    
 
    }
    startcounter(){

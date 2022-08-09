@@ -1,5 +1,9 @@
+
 <div class="container my-5" >
-    <div class="card">
+    <div class="text-center my-2"> <b> name of student : {{name}} </b>
+        <br>
+    if it's not you then Go to examstart section and  Select your name ! </div>
+    <div class="card ">
         <div class="text-center">
               <h2>  angular &typscript quiz</h2>
 
@@ -41,6 +45,7 @@
               <ng-container *ngIf="quizcomplete">
                 <div class="row d-flex justify-content-between">
                     <div class="result text-center col-md-6 col-sm-12">
+                        <p> <b>Name of Student :</b> {{name}}</p>
                         <p>total Question:{{questionlist.length}}</p>
                         <p>total Correct Question:{{correctanswer}}  </p>
                         <p>total Wrong answer:{{wronganswer}} </p>
@@ -48,7 +53,7 @@
                     </div>
 
                 </div>
-                
+                <a type="button " class="btn btn-success float-end" routerLink="/result">Check Result's</a>
               </ng-container>
     
     

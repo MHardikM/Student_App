@@ -1,0 +1,23 @@
+<div class="container my-3"> 
+    <div class="text-start">
+    <h3> <b>  Instruction For Student</b> <sup class="text-danger">(Read Carefully* )</sup> </h3>
+    <p> 1. After You Start Exam You Can't Press Back or Exit Until Exam is Finished !!</p>
+    <p> 2. If You Press Back or try-to Go On Other Section You'r Exam Will Termineted!!</p>
+    <p> 3. It's Your Responsibilty To Complete Exam If You Don't Complete It You Wan't Be Able To Give It Again !!</p>
+    <p> 4. There Are 20 Points For Each Right Answer And Negative 10 Points If Your Answer Is Wrong , Choose Option Wisely !!</p>
+    <p> 5. After Exam Complication You Can See You'r Score Card And Also On Result Section You Can Chek Your Result !!</p> 
+    <p> 6. Best Of Luck For Exam !!!</p>
+</div>
+
+<div class="text-center" *ngIf="stlist!=null && stlist!=undefined"> Select a Student : 
+   
+ <select name="studentname" id="studentname"  [(ngModel)]="name">  
+   <option  #name  *ngFor="let student of stlist;index as i" [hidden]="stlist[i].examcompleted===true" value="{{student.StudentName}}"  >{{student.StudentName}}</option>
+    </select> 
+    <div *ngIf="name!=undefined">
+      <a type="button" class="btn btn-success float-end my-4"(click)="passname()" routerLink="/exam">Start Exam</a>
+     </div>
+ </div> 
+</div> 
+<!-- [hidden]="stlist[i].StudentName==examcompleted[i].name" -->
+<!-- [hidden]="stlist[i].StudentName==examreport[i].name"  -->

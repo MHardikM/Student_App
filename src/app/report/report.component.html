@@ -1,0 +1,26 @@
+<div class="container my-2" style="max-width:50vw ;" >
+  <div class="text-center fw-bold h3 text-primary"> Student's attaindance Report</div>
+    <table class="table table-bordered border-secondary ">
+   <thead>
+     <tr>
+       <th scope="col">sr no </th>
+       <th scope="col">Date </th>
+       <th scope="col">Name Of Student</th>
+       <th scope="col">attaindance</th>
+     </tr>
+   </thead>
+ 
+   <tbody *ngFor="let item of attaindancesheet;index as i">
+     <tr *ngFor=" let  checks of item.attaindance |keyvalue;index as j ">
+        <th scope="row" >{{j+1}}</th>
+        <td >{{item.date}}</td> 
+        <td scope="row" >{{students[j].StudentName}} </td> 
+        <td  >{{checks.value}} </td> 
+       
+      </tr>
+ 
+   </tbody> 
+ </table>
+  </div>
+ <!-- *ngFor="let item of [].constructor( page.count ); let i = index"
+*ngFor="let n of [].constructor(10); index as i" -->

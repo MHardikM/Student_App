@@ -13,13 +13,16 @@ export class ResultComponent implements OnInit {
  totalr:any
  totalw:any
  totalp:any
- constructor(){ 
+   name:any
+    constructor(){ 
+
   this.datarecieve=localStorage.getItem("resultmaker");
   this.datarecieve=JSON.parse(this.datarecieve);
   this.totalque=this.datarecieve.totalquestion;
   this.totalr=this.datarecieve.totalright;
   this.totalw=this.datarecieve.totalwrong;
   this.totalp=this.datarecieve.totalpoints; 
+  this.name=this.datarecieve.name;
  }
 
 

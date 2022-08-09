@@ -1,14 +1,15 @@
 
-<div class="d-flex">
+<div class="bg-light" >
    
-    <div class="student_list py-3 bg-light text-dark w-50">
+    <div class="student_list py-3 bg-light text-dark w-50 " style="margin: auto;">
+      <div class="text-center my-3 fw-bold fs-3 text-success">Take Attaindance </div>
       <div class="text-center my-3">
         <b>select date : </b> <input min={{today}}  [(ngModel)]="today" type="date" (click)="datechange(userForm)" />
         
       </div>
       <div class="studentslist">
         
-        <form #userForm="ngForm" (submit)="onFormSubmit(userForm)" (submit)="resetform(userForm)"> 
+        <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)" (submit)="resetform(userForm)"> 
       
       <table class="table" id="tbl_student_attendance">
         <thead>
@@ -22,23 +23,47 @@
 
           <tr name="tabledata" id="tabledata" *ngFor="let names of students; index as i" >
             <th scope="row">{{i + 1}}</th>
-            <td>{{students[i].StudentName}}</td>
-            <td class="radioloop" >
-              <input type="radio" value="present"  [ngModel]="present" name="check{{i}}"  />present</td>
-           <td>
-              <input type="radio" value="absent"  [ngModel]="absent"  name="check{{i}}" checked/>absent </td>
-           <td>
-              <input type="radio" value="leave" name="check{{i}}" [ngModel]="leave" checked />leave</td>
+            <td>{{names.StudentName}}</td>
+            <td class="form-group" >
+              <input type="radio" value="present"  [ngModel]="present" name="check{{i}}" #presentvalid="ngModel" required />present</td>
+           <td class="form-group">
+              <input type="radio" value="absent"  [ngModel]="absent"  name="check{{i}}" checked required/>absent </td>
+           <td class="form-group">
+              <input type="radio" value="leave" name="check{{i}}" [ngModel]="leave" checked required />leave</td>
             </tr>
-            <button class="btn btn-success" id="button">Submit</button>
           </tbody>
-        </table>
+        </table> 
+        <button [hidden]="userForm.invalid"  class="btn btn-success float-end" id="button" >Submit</button>
+     
       </form>
       </div>
   </div>
 </div>
+  <!-- <div>
+  
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">sr no </th>
+      <th scope="col">Date </th>
+      <th scope="col">Name Of Student</th>
+      <th scope="col">attaindance</th>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let item of attaindancesheet;index as i" >
+  
+    <tr *ngFor=" let  checks of item.attaindance |keyvalue;index as j ">
+       <th scope="row">{{j+1}}</th>
+       <td>{{item.date}}</td> 
+       <td scope="row">{{students[j].StudentName}} </td> 
+       <td >{{checks.value}} </td> 
+      
+    </tr>
+
+  </tbody>
+</table>
+ </div> -->
 
 
- 
-
-
+ <!-- ng-repeat="n in [].constructor(10) track by $index" -->
